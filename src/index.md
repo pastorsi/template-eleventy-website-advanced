@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: base.njk
 title: "Home"
 ---
 ![hero image](assets/images/logo.png)

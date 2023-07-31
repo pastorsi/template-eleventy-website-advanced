@@ -3,7 +3,9 @@
         "crossorigin",
         "Eleventy",
         "MCEA",
+        "mobilemenu",
         "preconnect",
+        "Shortcode",
         "stylesheet"
     ]
 }
