@@ -1,10 +1,10 @@
 module.exports = function(eleventyConfig){
-  eleventyConfig.addPassthroughCopy('images');
-  eleventyConfig.addPassthroughCopy('js');
+  eleventyConfig.addPassthroughCopy('src/assets/images');
+  eleventyConfig.addPassthroughCopy('src/assets/js');
   // Copy the `css` directory to the output
-  eleventyConfig.addPassthroughCopy('css');
+  eleventyConfig.addPassthroughCopy('src/assets/css');
   // Watch the `css` directory for changes
-  eleventyConfig.addWatchTarget('css');
+  eleventyConfig.addWatchTarget('src/assets/css');
 
   // Obtain the `year` from the template
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);

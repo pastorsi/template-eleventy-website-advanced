@@ -2,7 +2,7 @@
 layout: base.njk
 title: "Home"
 ---
-![hero image](assets/images/logo.png)
+![hero image](assets/images/coffee.png)
 
 # My MCEA Eleventy Site
 
