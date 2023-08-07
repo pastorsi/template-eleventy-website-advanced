@@ -1,6 +1,5 @@
 ---
-layout: base.njk
-title: "Home"
+layout: "page"
 ---
 ![hero image](assets/images/coffee.png)
 
