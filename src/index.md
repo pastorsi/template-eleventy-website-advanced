@@ -1,5 +1,6 @@
 ---
-layout: "page"
+layout: "index"
+title: "Home"
 ---
 ![hero image](assets/images/coffee.png)
 
