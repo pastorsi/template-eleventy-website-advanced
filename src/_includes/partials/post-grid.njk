@@ -1,8 +1,10 @@
 <section class="section">
-    <h1 class="title has-text-info">Recent posts</h1>
-    <div class="columns is-multiline is-mobile">
-        {% for posts in collections.churches %}
-            {% include "partials/post-card.njk" %}
-        {% endfor %}
+    <div class="container">
+        <h1 class="title has-text-centered is-size-4">Recent posts</h1>
+        <div class="columns mt-5 is-8 is-variable is-centered">
+                {% for posts in collections.churches %}
+                    {% include "partials/post-card.njk" %}
+                {% endfor %}
+        </div>
     </div>
 </section>

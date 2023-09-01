@@ -1,20 +1,23 @@
-<div class="card">
-  <header class="card-header">
-    <p class="card-header-title">
-      {{ posts.data.title }}
-    </p>
-  </header>
-  <div class="card-image">
-    <figure class="image is-4by3">
-      <img src="{{ posts.data.image }}" alt="{{ posts.data.imageAlt}}">
-    </figure>
-  </div>
-  <div class="card-content">
-    <div class="content">
-    {{ posts.data.description }}
+
+<div class="column is-5-tablet is-4-desktop">
+  <div class="card shadow-lg is-rounded">
+    <div class="card-image is-overflow-hidden">
+      <div class="image has-text-centered">
+        <img src="{{ posts.data.image }}" alt="{{ posts.data.imageAlt}}">
+      </div>
     </div>
+    <div class="card-content">
+      <p class="card-header-title">
+        {{ posts.data.title }}
+      </p>
+      <div class="content">
+      {{ posts.data.description }}
+      </div>
+    </div>
+    <footer class="card-footer has-background-white-bis">
+      <p class="card-footer-item">
+        <a href="{{ posts.url }}" class="has-text-grey is-uppercase">View</a>
+      </p>
+    </footer>
   </div>
-  <footer class="card-footer">
-    <a href="{{ posts.url }}" class="card-footer-item">Read the full post</a>
-  </footer>
 </div>

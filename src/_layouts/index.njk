@@ -8,6 +8,7 @@ layout: "base"
             <div class="column"></div>
             <div class="column is-two-thirds">
                 {{ content | safe }}
+                {% include "partials/post-grid.njk" %}
             </div>
             <div class="column"></div>
         </div>
