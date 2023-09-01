@@ -4,6 +4,7 @@
         "crossorigin",
         "customise",
         "Eleventy",
+        "endfor",
         "MCEA",
         "mobilemenu",
         "mybulma",

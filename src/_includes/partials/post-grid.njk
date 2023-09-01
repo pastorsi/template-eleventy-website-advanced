@@ -1,0 +1,8 @@
+<section class="section">
+    <h1 class="title has-text-info">Recent posts</h1>
+    <div class="columns is-multiline is-mobile">
+        {% for posts in collections.churches %}
+            {% include "partials/post-card.njk" %}
+        {% endfor %}
+    </div>
+</section>
