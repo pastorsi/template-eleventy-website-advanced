@@ -1,6 +1,5 @@
 ---
 title: "Holy Trinity Church"
-tags: "churches"
 description: "Find out more about Holy Trinity Church and their leadership."
 image: "/assets/images/trinity-church.png"
 imageAlt: "Inside Trinity Church"

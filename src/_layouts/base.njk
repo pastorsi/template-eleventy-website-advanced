@@ -9,11 +9,11 @@
         <title>MCEA Eleventy - {{title}}</title>
     </head> 
     <body>
-        {% include "partials/_navigation.njk" %}
+        {% include "_navigation.njk" %}
         <main>
             {{ content | safe }}
         </main>
-        {% include "partials/_footer.njk" %}
+        {% include "_footer.njk" %}
         <script src="/assets/js/mobilemenu.js"></script>
     </body>
 </html>

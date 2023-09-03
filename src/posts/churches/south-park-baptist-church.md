@@ -1,6 +1,5 @@
 ---
 title: "South Park Baptist Church"
-tags: "churches"
 description: "Find out more about South Park Baptist Church and their leadership."
 image: "/assets/images/outside-baptist-church.jpg"
 imageAlt: "Outside the Baptist Church"
