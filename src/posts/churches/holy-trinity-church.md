@@ -1,6 +1,7 @@
 ---
 title: "Holy Trinity Church"
 description: "Find out more about Holy Trinity Church and their leadership."
+date: "2023-09-14"
 image: "/assets/images/trinity-church.png"
 imageAlt: "Inside Trinity Church"
 imageHeight: "265"

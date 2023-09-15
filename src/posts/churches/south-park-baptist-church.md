@@ -1,6 +1,7 @@
 ---
 title: "South Park Baptist Church"
 description: "Find out more about South Park Baptist Church and their leadership."
+date: "2023-09-15"
 image: "/assets/images/outside-baptist-church.jpg"
 imageAlt: "Outside the Baptist Church"
 imageWidth: "1024"
