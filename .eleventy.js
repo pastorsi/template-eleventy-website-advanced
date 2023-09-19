@@ -8,6 +8,10 @@ module.exports = function(eleventyConfig){
   eleventyConfig.setBrowserSyncConfig({
 		files: './_site/css/**/*.css'
 	});
+  // Enable collection in descending order
+  eleventyConfig.addCollection('posts', collection => {
+  return collection.getFilteredByGlob('.src/posts/**/*.md').reverse();
+  });
   // Obtain the `year` from the template
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
   // Obtain the `readableDate` from the template
