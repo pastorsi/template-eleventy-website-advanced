@@ -2,16 +2,20 @@ const sharp = require('sharp')
 const { DateTime } = require('luxon');
 
 module.exports = function(eleventyConfig){
+
   eleventyConfig.addPassthroughCopy('src/assets/images');
   eleventyConfig.addPassthroughCopy('src/assets/js');
+
   // Watch CSS files for changes
   eleventyConfig.setBrowserSyncConfig({
 		files: './_site/css/**/*.css'
 	});
+  
   // Enable collection in descending order
   eleventyConfig.addCollection('posts', collection => {
   return collection.getFilteredByGlob('.src/posts/**/*.md').reverse();
   });
+  
   // Obtain the `year` from the template
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
   // Obtain the `readableDate` from the template
@@ -20,9 +24,10 @@ module.exports = function(eleventyConfig){
       'dd LLL yyyy'
     );
   });
+  
   // Generate favicon from svg input
   // Only run on production build
-  // if (process.env.NODE_ENV === 'build') {
+  
     eleventyConfig.on('eleventy.before', async () => {
       console.log('[11ty] Generating Favicon')
       await sharp('src/assets/images/favicon.svg')
@@ -34,19 +39,25 @@ module.exports = function(eleventyConfig){
           console.log(err)
         })
     })
-  // }
+  
   eleventyConfig.watchIgnores.add('_site/assets/images/icon-96x96.png')
 
-    return {
-      dir: {
-        input: "src",
-        data: "_data",
-        includes: "_includes",
-        layouts: "_layouts"
-      }
-    };
-  
-    
+  return {
+    dir: {
+      input: "src",
+      output: "_site",
+      data: "_data",
+      includes: "_includes",
+      layouts: "_layouts"
+    },
+    templateFormats: [
+      'html',
+      'md',
+      'njk'
+    ],
+    passthroughFileCopy: true,
+    markdownTemplateEngine: "njk"
   }
-  
+};
+
   

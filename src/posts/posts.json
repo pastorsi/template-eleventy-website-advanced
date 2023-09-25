@@ -1,6 +1,5 @@
 {
     "layout": "post.njk",
     "permalink": "/{{ page.fileSlug }}/",
-    "tags": "post",
-    "templateEngineOverride": "njk, md"
+    "tags": "post"
 }
