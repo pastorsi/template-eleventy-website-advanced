@@ -12,25 +12,18 @@
                 <span></span>
             </a>
         </div>
-
         <div class="navbar-menu" id="nav-links">
             <div class="navbar-end">
-                <a href="/" class="navbar-item">
+                {% for link in navigationLinks %}
+                <a href="{{ link.url }}" class="navbar-item">
                     <span class="icon-text">
                         <span class="icon has-text-warning">
                             <i class="fas fa-home" aria-hidden="true"></i>
                         </span>
-                        <span>Home</span>
+                        <span>{{ link.text }}</span>
                     </span>
                 </a>
-                <a href="/about" class="navbar-item">
-                    <span class="icon-text">
-                        <span class="icon has-text-warning">
-                            <i class="fas fa-address-card" aria-hidden="true"></i>
-                        </span>
-                        <span>About</span>
-                    </span>
-                </a>
+                {% endfor %}
             </div>
         </div>
     </nav>
