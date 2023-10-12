@@ -1,0 +1,9 @@
+<section class="section">
+    <div class="container">
+        <div class="columns mt-5 is-8 is-variable is-centered">
+                {% for church in collections.church %}
+                    {% include "partials/church-card.njk" %}
+                {% endfor %}
+        </div>
+    </div>
+</section>

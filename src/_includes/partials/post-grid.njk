@@ -2,11 +2,11 @@
     <div class="container">
         <h1 class="title has-text-centered is-size-4">Recent posts</h1>
         <div class="columns mt-5 is-8 is-variable is-centered">
-                {%- for post in collections.post | reverse -%}
-                {%- if loop.index0 < 3 -%}
-                    {%- include "partials/post-card.njk" -%}
-                {%- endif -%}
-                {%- endfor -%}
+                {% for post in collections.post | reverse %}
+                {% if loop.index0 < 3 %}
+                    {% include "partials/post-card.njk" %}
+                {% endif %}
+                {% endfor %}
         </div>
     </div>
 </section>
