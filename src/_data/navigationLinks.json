@@ -1,5 +1,5 @@
 [
-    {"text": "Home", "url": "/index/"},
-    {"text": "About", "url": "/about/"},
-    {"text": "Churches", "url": "/churches/"}
+    {"text": "Home", "url": "/index/", "icon": "fas fa-home"},
+    {"text": "About", "url": "/about/", "icon": "fas fa-address-card"},
+    {"text": "Churches", "url": "/churches/", "icon": "fas fa-church"}
 ]
