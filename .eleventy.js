@@ -5,7 +5,9 @@ module.exports = function(eleventyConfig){
 
   eleventyConfig.addPassthroughCopy('src/assets/images');
   eleventyConfig.addPassthroughCopy('src/assets/js');
-
+ // Add this line to recognize the data directory
+  eleventyConfig.addPassthroughCopy('_data');
+  
   // Watch CSS files for changes
   eleventyConfig.setBrowserSyncConfig({
 		files: './_site/css/**/*.css'
@@ -18,11 +20,14 @@ module.exports = function(eleventyConfig){
   
   // Obtain the `year` from the template
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+  // Obtain the 'htmlDateString' from the template
+  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+  });
   // Obtain the `readableDate` from the template
   eleventyConfig.addFilter('readableDate', (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
-      'dd LLL yyyy'
-    );
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat('dd LLL yyyy');
+    
   });
   
   // Generate favicon from svg input

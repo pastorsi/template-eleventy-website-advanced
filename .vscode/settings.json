@@ -1,17 +1,21 @@
 {
     "cSpell.words": [
         "bulma",
+        "changefreq",
         "crossorigin",
         "customise",
         "datetime",
         "Eleventy",
         "endfor",
+        "fullhd",
+        "lastmod",
         "luxon",
         "MCEA",
         "mobilemenu",
         "mybulma",
         "preconnect",
         "Shortcode",
-        "stylesheet"
+        "stylesheet",
+        "urlset"
     ]
 }
