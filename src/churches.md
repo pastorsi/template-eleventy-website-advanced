@@ -1,6 +1,7 @@
 ---
 layout: "page"
 title: "Churches"
+description: "List of participating churches"
 ---
 
 ## Participating Churches

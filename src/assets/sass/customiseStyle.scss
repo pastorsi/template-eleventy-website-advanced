@@ -29,6 +29,8 @@ $control-border-width: 2px;
 $input-border-color: transparent;
 $input-shadow: none;
 
-
+/* Override Bulma variables */
+$card-radius: 10px; /* Adjust the corner radius as per your preference */
+$card-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.31), 0 0px 0 1px rgba(10, 10, 10, 0.07); /* Adjust shadow properties as needed */
 
 @import "../../../mybulma/bulma.sass";

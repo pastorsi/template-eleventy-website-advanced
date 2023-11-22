@@ -1,6 +1,7 @@
 ---
 layout: "index"
 title: "Home"
+description: "Introduction to the website of the MCEA"
 ---
 ![hero image](assets/images/coffee.png)
 

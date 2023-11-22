@@ -1,6 +1,7 @@
 ---
 layout: "page"
 title: "About"
+description: "Information about the role of MCEA in the local Christian community"
 ---
 
 ## Introduction

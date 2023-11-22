@@ -1,13 +1,16 @@
 const sharp = require('sharp')
 const { DateTime } = require('luxon');
+const pluginRss = require('@11ty/eleventy-plugin-rss');
 
 module.exports = function(eleventyConfig){
 
   eleventyConfig.addPassthroughCopy('src/assets/images');
   eleventyConfig.addPassthroughCopy('src/assets/js');
- // Add this line to recognize the data directory
+  // Add this line to recognize the data directory
   eleventyConfig.addPassthroughCopy('_data');
-  
+  // Official plugins
+	eleventyConfig.addPlugin(pluginRss);
+
   // Watch CSS files for changes
   eleventyConfig.setBrowserSyncConfig({
 		files: './_site/css/**/*.css'

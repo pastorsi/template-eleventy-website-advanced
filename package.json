@@ -20,6 +20,7 @@
     "sass": "^1.64.2"
   },
   "dependencies": {
+    "@11ty/eleventy-plugin-rss": "^1.2.0",
     "luxon": "^3.4.3",
     "sharp": "^0.32.4"
   }
