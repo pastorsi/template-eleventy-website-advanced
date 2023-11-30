@@ -1,0 +1,49 @@
+{
+    "formId": "contact_form",
+    "formRef": "form",
+    "submitPrevent": true,
+    "method": "post",
+    "action": "https://api.web3forms.com/submit",
+    "fields": [
+      {
+        "label": "Name",
+        "controlType": "input",
+        "inputType": "text",
+        "name": "name",
+        "placeholder": "Your name",
+        "required": true,
+        "pattern": "^[a-zA-Z ]+$"
+      },
+      {
+        "label": "Email",
+        "controlType": "input",
+        "inputType": "email",
+        "name": "email",
+        "placeholder": "e.g. alexsmith@gmail.com",
+        "required": true
+      },
+      {
+        "label": "Message",
+        "controlType": "textarea",
+        "name": "message",
+        "placeholder": "Please write your message here",
+        "required": true,
+        "minlength": 5
+      }
+    ],
+    "hiddenFields": [
+      {
+        "type": "hidden",
+        "name": "access_key"
+      }
+    ],
+    "recaptcha": {
+      "siteKey": "YOUR_RECAPTCHA_SITE_KEY",
+      "divClass": "g-recaptcha"
+    },
+    "submitButton": {
+      "class": "button is-primary",
+      "text": "Send"
+    }
+  }
+  

@@ -1,6 +1,8 @@
 const sharp = require('sharp')
 const { DateTime } = require('luxon');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
+require('dotenv').config();
+const W3F_API_KEY = process.env.W3F_API_KEY;
 
 module.exports = function(eleventyConfig){
 
@@ -10,7 +12,8 @@ module.exports = function(eleventyConfig){
   eleventyConfig.addPassthroughCopy('_data');
   // Official plugins
 	eleventyConfig.addPlugin(pluginRss);
-
+  // .env
+  eleventyConfig.addGlobalData('env', process.env);
   // Watch CSS files for changes
   eleventyConfig.setBrowserSyncConfig({
 		files: './_site/css/**/*.css'
@@ -20,7 +23,6 @@ module.exports = function(eleventyConfig){
   eleventyConfig.addCollection('posts', collection => {
   return collection.getFilteredByGlob('.src/posts/**/*.md').reverse();
   });
-  
   // Obtain the `year` from the template
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
   // Obtain the 'htmlDateString' from the template

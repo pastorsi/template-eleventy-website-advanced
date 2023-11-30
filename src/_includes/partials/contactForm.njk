@@ -1,0 +1,41 @@
+<form 
+            id="{{ contactForm.formId }}"
+            ref="{{ contactForm.formRef }}"
+            @submit.prevent="sendEmail"
+            method="{{ contactForm.method }}"
+            action="{{ contactForm.action }}"
+>
+<div class="field">
+  <input 
+    type="hidden"  
+    name="access_key"
+    value="{{ env.W3F_API_KEY }}"
+  />
+</div>
+{% for field in contactForm.fields %}
+  <div class="field">
+    <label class="label">{{ field.label }}</label>
+    <div class="control">
+      {% if field.controlType == "input" %}
+        <input
+          class="input"
+          type="{{ field.inputType }}"
+          name="{{ field.name }}"
+          placeholder="{{ field.placeholder }}"
+          {% if field.required %} required="required"{% endif %}
+          {% if field.pattern %} pattern="{{ field.pattern }}"{% endif %}
+        />
+      {% elif field.controlType == "textarea" %}
+        <textarea
+          class="textarea"
+          name="{{ field.name }}"
+          placeholder="{{ field.placeholder }}"
+          {% if field.required %} required="required"{% endif %}
+          {% if field.minlength %} minlength="{{ field.minlength }}"{% endif %}
+        ></textarea>
+      {% endif %}
+    </div>
+  </div>
+{% endfor %}
+  <button class="{{ contactForm.submitButton.class }}" type="submit">{{ contactForm.submitButton.text }}</button>
+</form>
