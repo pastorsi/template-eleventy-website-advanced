@@ -1,7 +1,6 @@
 <form 
             id="{{ contactForm.formId }}"
             ref="{{ contactForm.formRef }}"
-            @submit.prevent="sendEmail"
             method="{{ contactForm.method }}"
             action="{{ contactForm.action }}"
 >
@@ -10,6 +9,11 @@
     type="hidden"  
     name="access_key"
     value="{{ env.W3F_API_KEY }}"
+  />
+  <input 
+    type="hidden"  
+    name="redirect"
+    value="https://www.mcea.org.uk/contact"
   />
 </div>
 {% for field in contactForm.fields %}
@@ -37,5 +41,7 @@
     </div>
   </div>
 {% endfor %}
+  <div class="h-captcha" data-captcha="true"></div>
   <button class="{{ contactForm.submitButton.class }}" type="submit">{{ contactForm.submitButton.text }}</button>
 </form>
+<script src="https://web3forms.com/client/script.js" async defer></script>
