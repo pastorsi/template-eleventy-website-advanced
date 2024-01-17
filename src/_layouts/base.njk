@@ -5,12 +5,19 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <link rel="stylesheet" href="/css/customiseStyle.css" />
+        {% if title == "Search" %}
+            <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+        {% endif %}
         <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/icon-96x96.png" />
         <title>MCEA Eleventy - {{title}}</title>
     </head> 
     <body>
         {% include "_navigation.njk" %}
-        <main>
+        <main
+            {% if (title !== "Cookie Policy") and (title !== "Privacy Policy") and (title !== "Contact") and (title !== "Thank you") and (title !== "Search") %} 
+                data-pagefind-body
+            {% endif %}
+        >
             {{ content | safe }}
         </main>
         {% include "_footer.njk" %}
