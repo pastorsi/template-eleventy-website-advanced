@@ -5,6 +5,7 @@ require('dotenv').config();
 const W3F_API_KEY = process.env.W3F_API_KEY;
 const fs = require("fs");
 const NOT_FOUND_PATH = "_site/404.html";
+const { exec } = require('child_process');
 
 module.exports = function(eleventyConfig){
 
@@ -16,8 +17,36 @@ module.exports = function(eleventyConfig){
 	eleventyConfig.addPlugin(pluginRss);
   // .env
   eleventyConfig.addGlobalData('env', process.env);
-  
-  eleventyConfig.setBrowserSyncConfig({
+// PageFind
+
+  eleventyConfig.on('eleventy.after', async () => {
+    // Add a delay (e.g., 2 seconds) before running Pagefind
+    await delay(2000);
+
+    try {
+      await execCommand('npx pagefind --site _site --output-subdir pagefind --glob "**/*.html"');
+    } catch (error) {
+      console.error('Error running pagefind:', error.message);
+    }
+  });
+
+function execCommand(command) {
+  return new Promise((resolve, reject) => {
+    exec(command, { encoding: 'utf-8' }, (error, stdout, stderr) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve({ stdout, stderr });
+      }
+    });
+  });
+}
+
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+eleventyConfig.setBrowserSyncConfig({
     // Watch CSS files for changes
 		files: './_site/css/**/*.css',
     // 404 routing by passing a callback
