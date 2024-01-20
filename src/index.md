@@ -5,6 +5,6 @@ description: "Introduction to the new website"
 ---
 ![hero image](assets/images/coffee.png)
 
-# My MCEA Eleventy Site
+# My Template for Eleventy Sites
 
-MCEA site   made with [Eleventy](https://www.11ty.io/)
+Template made with [Eleventy](https://www.11ty.io/)
