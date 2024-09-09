@@ -1,9 +1,10 @@
 const sharp = require('sharp')
+const fs = require("fs");
+const path = require('path');
 const { DateTime } = require('luxon');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 require('dotenv').config();
 const W3F_API_KEY = process.env.W3F_API_KEY;
-const fs = require("fs");
 const NOT_FOUND_PATH = "_site/404.html";
 const { exec } = require('child_process');
 
@@ -84,21 +85,73 @@ eleventyConfig.setBrowserSyncConfig({
     
   });
   
+  // This next part is connected to the functions for generating favicon
+  // At the top of the file there are also 3 constants related to it - sharp, fs and path
+
+  // Function to get the absolute path of a file
+  function getAbsolutePath(relativePath) {
+    return path.resolve(process.cwd(), relativePath);
+  }
+  
+  // Ensure _site directory exists
+  fs.mkdirSync('_site', { recursive: true });
+  
   // Generate favicon from svg input
   // Only run on production build
+  eleventyConfig.on('eleventy.before', async () => {
+    console.log('[11ty] Generating Favicon');
   
-    eleventyConfig.on('eleventy.before', async () => {
-      console.log('[11ty] Generating Favicon')
-      await sharp('src/assets/images/favicon.svg')
+    try {
+      // Possible locations for the favicon file
+      const possiblePaths = [
+        'src/assets/images/flavicon.svg',
+        'src/assets/images/favicon.svg',
+        'assets/images/flavicon.svg',
+        'assets/images/favicon.svg'
+      ];
+  
+      let inputPath;
+      
+      // Check each possible location
+      for (const pathOption of possiblePaths) {
+        const absolutePath = getAbsolutePath(pathOption);
+        if (fs.existsSync(absolutePath)) {
+          inputPath = absolutePath;
+          break;
+        }
+      }
+  
+      if (!inputPath) {
+        console.error('[11ty] ERROR: Input file not found in any expected location.');
+        console.error(`Expected paths: ${possiblePaths.join(', ')}`);
+        return;
+      }
+  
+      console.log(`[11ty] Found input file: ${inputPath}`);
+  
+      const outputPath = getAbsolutePath('_site/favicon.png');
+      const rootPath = getAbsolutePath('favicon.png');
+  
+      await sharp(inputPath)
         .png()
-        .resize(96, 96)
-        .toFile('_site/assets/images/icon-96x96.png')
+        .resize(192, 192) // Adjust size as needed
+        .toFile(outputPath)
         .catch(function (err) {
-          console.log('[11ty] ERROR Generating favicon')
-          console.log(err)
-        })
-    })
+          console.error('[11ty] ERROR Generating favicon:', err.message);
+          throw err;
+        });
   
+      fs.copyFileSync(outputPath, rootPath);
+      
+      console.log('[11ty] Favicon generated and copied to root directory');
+    } catch (error) {
+      console.error('[11ty] Error during favicon generation:', error.message);
+    }
+  });
+  
+  // Ignore the generated favicon file in the watch config
+  eleventyConfig.watchIgnores.add('_site/favicon.png');
+  eleventyConfig.watchIgnores.add('favicon.png');
   eleventyConfig.watchIgnores.add('_site/assets/images/icon-96x96.png')
 
   return {
