@@ -46,28 +46,6 @@ function execCommand(command) {
 function delay(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
-
-eleventyConfig.setBrowserSyncConfig({
-    // Watch CSS files for changes
-		files: './_site/css/**/*.css',
-    // 404 routing by passing a callback
-    callbacks: {
-      ready: function(err, bs) {
-
-        bs.addMiddleware("*", (req, res) => {
-          if (!fs.existsSync(NOT_FOUND_PATH)) {
-            throw new Error(`Expected a \`${NOT_FOUND_PATH}\` file but could not find one. Did you create a 404.html template?`);
-          }
-          const content_404 = fs.readFileSync(NOT_FOUND_PATH);
-          // Add 404 http status code in request header.
-          res.writeHead(404, { "Content-Type": "text/html; charset=UTF-8" });
-          // Provides the 404 content without redirect.
-          res.write(content_404);
-          res.end();
-        });
-      }
-    }
-	});
   
   // Enable collection in descending order
   eleventyConfig.addCollection('posts', collection => {
