@@ -1,7 +1,40 @@
 [
-    {"text": "Home", "url": "/index/", "icon": "fas fa-home"},
-    {"text": "About", "url": "/about/", "icon": "fas fa-address-card"},
-    {"text": "Churches", "url": "/churches/", "icon": "fas fa-church"},
-    {"text": "Contact", "url": "/contact/", "icon": "fas fa-envelope"},
-    {"text": "Search", "url": "/search/", "icon": "fas fa-magnifying-glass"}
+    {
+        "text": "Home", 
+        "url": "/index/", 
+        "icon": "fas fa-home"
+    },
+    {
+        "text": "About", 
+        "url": "/about/", 
+        "icon": "fas fa-address-card"
+    },
+    {
+        "text": "Services", 
+        "icon": "fas fa-tools",
+        "children": [
+            {
+                "text": "Architectural Design", 
+                "url": "/services/architectural-design/"
+            },
+            {
+                "text": "Health & Safety", 
+                "url": "/services/health-safety/"
+            },
+            {
+                "text": "Specialist Construction", 
+                "url": "/services/specialist-construction/"
+            }
+        ]
+    },
+    {
+        "text": "Contact", 
+        "url": "/contact/", 
+        "icon": "fas fa-envelope"
+    },
+    {
+        "text": "Search", 
+        "url": "/search/", 
+        "icon": "fas fa-magnifying-glass"
+    }
 ]

@@ -1,30 +1,53 @@
 <nav class="navbar has-shadow is-success px-5">
-        <!-- logo / brand -->
-        <div class="navbar-brand">
-            <a href="/" class="navbar-item">
-                <figure class="image is-64x64">
-                    <img src="/assets/images/logo.png" alt="Site logo" style="max-height: 70px;" class="py-2 px-2">
-                </figure>
-            </a>
-            <a class="navbar-burger" id="burger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </a>
-        </div>
-        <div class="navbar-menu" id="nav-links">
-            <div class="navbar-end">
-                {% for link in navigationLinks %}
-                <a href="{{ link.url }}" class="navbar-item">
-                    <span class="icon-text">
-                        <span class="icon has-text-warning">
-                            <i class="{{ link.icon }}" aria-hidden="true"></i>
+    <!-- logo / brand -->
+    <div class="navbar-brand">
+        <a href="/" class="navbar-item">
+            <figure class="image is-64x64">
+                <img src="/assets/images/logo.png" alt="Site logo" style="max-height: 70px;" class="py-2 px-2">
+            </figure>
+        </a>
+        <a class="navbar-burger" id="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+    </div>
+    <div class="navbar-menu" id="nav-links">
+        <div class="navbar-end">
+            {% for link in navigationLinks %}
+                {% if link.children %}
+                    <!-- Nested dropdown for items with children -->
+                    <div class="navbar-item has-dropdown is-hoverable">
+                        <a class="navbar-link" aria-expanded="false">
+                            <span class="icon-text">
+                                {% if link.icon %}
+                                    <span class="icon has-text-warning">
+                                        <i class="{{ link.icon }}" aria-hidden="true"></i>
+                                    </span>
+                                {% endif %}
+                                <span>{{ link.text }}</span>
+                            </span>
+                        </a>
+                        <div class="navbar-dropdown">
+                            {% for child in link.children %}
+                                <a href="{{ child.url }}" class="navbar-item">{{ child.text }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% else %}
+                    <!-- Regular menu item -->
+                    <a href="{{ link.url }}" class="navbar-item">
+                        <span class="icon-text">
+                            {% if link.icon %}
+                                <span class="icon has-text-warning">
+                                    <i class="{{ link.icon }}" aria-hidden="true"></i>
+                                </span>
+                            {% endif %}
+                            <span>{{ link.text }}</span>
                         </span>
-                        <span>{{ link.text }}</span>
-                    </span>
-                </a>
-                {% endfor %}
-            </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
         </div>
-    </nav>
-    
+    </div>
+</nav>
