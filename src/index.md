@@ -5,6 +5,6 @@ description: "Introduction to the new website"
 ---
 ![hero image](assets/images/coffee.png)
 
-# My Template for Eleventy Sites
+# Template for all Eleventy Sites framework sites
 
 Template made with [Eleventy](https://www.11ty.io/)
